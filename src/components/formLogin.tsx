@@ -4,10 +4,11 @@ import type { LoginData } from "../schema/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 
-const Form = () => {
+const FormLogin = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
@@ -15,22 +16,16 @@ const Form = () => {
 
   const onSubmit = async (data: LoginData) => {
     try {
-      const response = await axios.post("http://localhost:3333/api/auth/login", data); // ou o link da sua API hospedada
+      const response = await axios.post("http://localhost:3333/api/auth/login", data);
 
-      const { token, user } = response.data;
-
-      // Salva o token no localStorage ou cookie
+      const { token } = response.data;
       localStorage.setItem("token", token);
-
-      // Exemplo: redirecionar ou atualizar o estado do usuário
-      console.log("Usuário logado:", user);
-
-      // Redirecionar
-      // navigate("/dashboard"); ← se estiver usando React Router
+      reset();
+      alert("Login realizado com sucesso!");
 
     } catch (error: unknown) {
       if (axios.isAxiosError(error) && error.response) {
-        alert(error.response.data.message); // Erro de autenticação
+        alert(error.response.data.message);
       } else {
         alert("Erro ao conectar com o servidor.");
       }
@@ -70,4 +65,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormLogin;
