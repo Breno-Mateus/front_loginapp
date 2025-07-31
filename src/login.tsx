@@ -13,6 +13,7 @@ const Login = () => {
         <img src={Logo} className="w-1/3" />
         <h1 className="text-xl font-semibold">Que bom ver você de novo</h1>
         <Form />
+        <p className="text-xs text-center">Já tem uma conta? <span className="text-blue-500">Cadastre-se agora</span></p>
       </section>
     </main>
   );
