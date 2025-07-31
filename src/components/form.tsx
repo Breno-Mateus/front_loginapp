@@ -65,7 +65,7 @@ const Form = () => {
         {errors.password && <span className="text-xs text-red-500">{errors.password.message}</span>}
       </div>
 
-      <button type="submit" className="bg-[#007AFF] text-white font-bold py-1 rounded-sm">Entrar</button>
+      <button type="submit" className="bg-[#007AFF] text-white font-bold py-1 rounded-sm cursor-pointer hover:opacity-90">Entrar</button>
     </form>
   );
 };

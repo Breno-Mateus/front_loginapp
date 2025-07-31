@@ -1,19 +1,45 @@
 import Picture from "./assets/main.png";
 import Form from "./components/form";
 import Logo from "./assets/logo.png";
+import Figma from "./assets/figma.png";
 
 const Login = () => {
   return (
-    <main className="flex">
-      <section className="w-4/6 h-screen">
+    <main className="flex flex-col justify-around md:flex-row h-screen">
+      <section className="hidden md:block w-1/2 xl:w-4/6 h-screen">
         <img src={Picture} className="h-full w-full" />
       </section>
 
-      <section className="w-1/3 h-screen p-12 flex flex-col gap-8">
-        <img src={Logo} className="w-1/3" />
+      <section className="md:w-1/2 xl:w-1/3 md:h-screen p-12 flex flex-col justify-around gap-8">
+        <img src={Logo} className="hidden md:block w-1/3" />
         <h1 className="text-xl font-semibold">Que bom ver você de novo</h1>
         <Form />
-        <p className="text-xs text-center">Já tem uma conta? <span className="text-blue-500">Cadastre-se agora</span></p>
+        <p className="text-xs text-center">
+          Já tem uma conta?{" "}
+          <span className="text-blue-500">Cadastre-se agora</span>
+        </p>
+
+        <div className="flex justify-between px-4">
+          <div className="flex items-center gap-1">
+            <img src={Figma} />
+            <p className="text-sm text-blue-400">@uiunicorn</p>
+          </div>
+
+          <p className="text-sm text-gray-400">© Perfect Login 2021</p>
+        </div>
+      </section>
+
+      <section className="md:hidden flex items-center justify-center">
+        <img src={Logo} className="w-2/5" />
+      </section>
+
+      <section className="flex justify-between md:hidden px-4">
+        <div className="flex items-center gap-1">
+          <img src={Figma} />
+          <p className="text-sm text-blue-400">@uiunicorn</p>
+        </div>
+
+        <p className="text-sm text-gray-400">© Perfect Login 2021</p>
       </section>
     </main>
   );
