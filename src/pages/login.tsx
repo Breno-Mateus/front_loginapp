@@ -1,9 +1,9 @@
-import Picture from "./assets/main.png";
-import FormLogin from "./components/formLogin";
-import Logo from "./assets/logo.png";
-import Figma from "./assets/figma.png";
+import Picture from "../assets/main.png";
+import FormLogin from "../components/formLogin";
+import Logo from "../assets/logo.png";
+import Figma from "../assets/figma.png";
 import { useState } from "react";
-import FormRegister from "./components/formRegister";
+import FormRegister from "../components/formRegister";
 
 const Login = () => {
 
