@@ -1,28 +1,22 @@
 import { useForm } from "react-hook-form";
 import { registerSchema, type RegisterData } from "../schema/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import { useRegister } from "../hooks/useRegister";
 
-type Props ={
+export type Props ={
   setRegister: (value: boolean) => void;
 };
 
 const FormRegister = ({setRegister} : Props) => {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<RegisterData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<RegisterData>({
     resolver: zodResolver(registerSchema),
   });
 
+  const { register: registerUser } = useRegister();
+
   const onSubmit = async (data: RegisterData) => {
-    try{
-      await axios.post("http://localhost:3333/api/auth/register", data);
-      reset();
-      alert("Usuário cadastrado com sucesso!");
-      setRegister(false);
-    } catch (error: unknown) {
-      console.error("Erro ao cadastrar usuário:", error);
-      alert("Erro ao cadastrar usuário. Tente novamente.");
-    }
+    registerUser(data, setRegister);
   }
 
   return (
